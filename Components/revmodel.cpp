@@ -64,7 +64,7 @@ void revmodel::mute()
 		combL[i].mute();
 		combR[i].mute();
 	}
-	for (i=0;i<numallpasses;i++)
+	for (int i=0;i<numallpasses;i++)
 	{
 		allpassL[i].mute();
 		allpassR[i].mute();
@@ -88,7 +88,7 @@ void revmodel::processreplace(float *inputL, float *inputR, float *outputL, floa
 		}
 
 		// Feed through allpasses in series
-		for(i=0; i<numallpasses; i++)
+		for(int i=0; i<numallpasses; i++)
 		{
 			outL = allpassL[i].process(outL);
 			outR = allpassR[i].process(outR);
@@ -123,7 +123,7 @@ void revmodel::processmix(float *inputL, float *inputR, float *outputL, float *o
 		}
 
 		// Feed through allpasses in series
-		for(i=0; i<numallpasses; i++)
+		for(int i=0; i<numallpasses; i++)
 		{
 			outL = allpassL[i].process(outL);
 			outR = allpassR[i].process(outR);
@@ -145,8 +145,6 @@ void revmodel::update()
 {
 // Recalculate internal values after parameter change
 
-	int i;
-
 	wet1 = wet*(width/2 + 0.5f);
 	wet2 = wet*((1-width)/2);
 
@@ -163,13 +161,13 @@ void revmodel::update()
 		gain = fixedgain;
 	}
 
-	for(i=0; i<numcombs; i++)
+	for(int i=0; i<numcombs; i++)
 	{
 		combL[i].setfeedback(roomsize1);
 		combR[i].setfeedback(roomsize1);
 	}
 
-	for(i=0; i<numcombs; i++)
+	for(int i=0; i<numcombs; i++)
 	{
 		combL[i].setdamp(damp1);
 		combR[i].setdamp(damp1);
