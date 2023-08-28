@@ -5,7 +5,7 @@ project(freeverb LANGUAGES CXX)
 #  Build options  #
 ###################
 
-option(FREEVERB_DENORMAL_SAMPLES "Add code to denormalizing samples, not needed if the host sets denormals to off" OFF)
+option(FREEVERB_UNDENORMALIZE "Skip undenormalizing samples, useful if the host sets denormals to off" ON)
 
 ###################
 #  Create target  #
@@ -18,6 +18,6 @@ add_library(freeverb STATIC Components/allpass.cpp
 target_include_directories(freeverb PUBLIC include Components)
 target_compile_features(freeverb PUBLIC cxx_std_17)
 
-if (FREEVERB_DENORMAL_SAMPLES)
-    target_compile_definitions(freeverb PRIVATE FREEVERB_DENORMAL_SAMPLES=1 )
+if (FREEVERB_UNDENORMALIZE)
+    target_compile_definitions(freeverb PRIVATE FREEVERB_UNDENORMALIZE=1)
 endif()
