@@ -15,7 +15,8 @@ add_library(freeverb STATIC Components/allpass.cpp
                             Components/comb.cpp
                             Components/revmodel.cpp)
 
-target_include_directories(freeverb PUBLIC include Components)
+target_include_directories(freeverb PUBLIC Components)
+target_compile_options(freeverb PRIVATE -fno-rtti -ffast-math)
 target_compile_features(freeverb PUBLIC cxx_std_17)
 
 if (FREEVERB_UNDENORMALIZE)
